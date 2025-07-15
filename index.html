@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NayrStudio — Beleza de Outro Nível</title>
+  <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div>
+      <h1>NayrStudio</h1>
+      <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <nav id="nav">
+        <a href="#home">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#ba">Antes/Depois</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+    <button id="theme-toggle" onclick="toggleTheme()">🌓</button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content reveal">
+      <h2>Beleza que transforma</h2>
+      <p>Bem-vinda ao seu novo momento. NayrStudio é mais do que estética: é experiência, cuidado e arte.</p>
+      <a href="#contato">Agendar Agora</a>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos" class="reveal">
+    <h2>Nossos Serviços</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <h3>Cabeleireira</h3>
+        <p>Cortes modernos, coloração e tratamentos premium para realçar sua beleza.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Manicure</h3>
+        <p>Cuidados clássicos e modernos para mãos impecáveis.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Nail Designer</h3>
+        <p>Arte e tendências em unhas com técnicas avançadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before/After Slider -->
+  <section id="ba" class="reveal">
+    <h2 style="text-align:center; font-family:serif; font-size:2.5rem; color: var(--gold);">Antes & Depois</h2>
+    <div class="ba-slider">
+      <img src="imagem1.jpeg" alt="Antes">
+      <div class="resize"><img src="imagem1.jpeg" alt="Depois"></div>
+      <span class="handle"></span>
+    </div>
+  </section>
+
+  <!-- Clientes Coverflow -->
+  <section id="clientes" class="reveal">
+    <h2 style="text-align:center; font-family:serif; font-size:2.5rem; color:inherit;">Galeria de Clientes</h2>
+    <div class="coverflow-container">
+      <button class="nav-button prev" onclick="navigate(-1)">‹</button>
+      <div id="coverflow" class="coverflow">
+        <img src="imagem1.jpeg" alt="Cliente A" data-index="0">
+        <img src="imagem1.jpeg" alt="Cliente B" data-index="1">
+        <img src="imagem1.jpeg" alt="Cliente C" data-index="2">
+        <img src="imagem1.jpeg" alt="Cliente D" data-index="3">
+        <img src="imagem1.jpeg" alt="Cliente E" data-index="4">
+      </div>
+      <button class="nav-button next" onclick="navigate(1)">›</button>
+    </div>
+  </section>
+
+  <!-- Depoimentos Slider -->
+  <section id="depoimentos" class="testimonials reveal">
+    <h2 style="text-align:center; font-family:serif; font-size:2.5rem; color: var(--gold);">Depoimentos</h2>
+    <div class="slides">
+      <div class="slide">
+        <p>"Amei meu corte e coloração! Nunca me senti tão confiante."</p>
+        <h4>- Ana Silva</h4>
+      </div>
+      <div class="slide">
+        <p>"As unhas ficaram perfeitas, o atendimento é incrível!"</p>
+        <h4>- Camila Souza</h4>
+      </div>
+      <div class="slide">
+        <p>"Recomendo a todos, o ambiente e o serviço são de altíssimo padrão."</p>
+        <h4>- Juliana Costa</h4>
+      </div>
+    </div>
+    <div class="testi-nav">
+      <button onclick="testiNav(-1)">‹</button>
+      <button onclick="testiNav(1)">›</button>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="reveal" style="background: var(--glass); backdrop-filter:blur(10px); border-radius:20px;">
+    <h2>Agende seu horário</h2>
+    <div class="contact">
+      <form>
+        <input type="text" placeholder="Seu nome" required>
+        <input type="email" placeholder="Seu e-mail" required>
+        <textarea rows="5" placeholder="Mensagem..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floater -->
+  <a href="https://wa.me/551199999999?text=Ol%C3%A1%2C%20quero%20agendar" class="whatsapp-float" target="_blank">
+    <img src="whatsapp-icon.png" alt="WhatsApp" style="width:100%; height:100%;">  
+  </a>
+
+  <footer>
+    © 2025 NayrStudio • Estética com identidade.
+  </footer>
+
+  <script>
+    // Menu responsivo
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("active");
+    }
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      localStorage.theme = document.body.classList.contains('light') ? 'light' : 'dark';
+    }
+    if (localStorage.theme === 'light') document.body.classList.add('light');
+    // Reveal on scroll
+    const reveales = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => e.isIntersecting && e.target.classList.add('active'));
+    }, { threshold: 0.2 });
+    reveales.forEach(r => io.observe(r));
+    // Before/After Slider
+    const slider = document.querySelector('.ba-slider');
+    const resize = slider.querySelector('.resize');
+    const handle = slider.querySelector('.handle');
+    let isDragging = false;
+
+function moveHandle(clientX) {
+  const rect = slider.getBoundingClientRect();
+  let pos = clientX - rect.left;
+  pos = Math.max(0, Math.min(pos, rect.width));
+  resize.style.width = pos + 'px';
+  handle.style.left = pos + 'px';
+}
+
+// inicia o drag
+handle.addEventListener('pointerdown', e => {
+  isDragging = true;
+  // para não “selecionar” a imagem/texto enquanto arrasta:
+  e.preventDefault();
+});
+
+// arrasta (mouse ou touch ou stylus)
+document.addEventListener('pointermove', e => {
+  if (!isDragging) return;
+  moveHandle(e.clientX);
+});
+
+// termina o drag
+document.addEventListener('pointerup', () => {
+  isDragging = false;
+});
+    // Coverflow Clientes
+    const coverflow = document.getElementById('coverflow');
+    const imgs = Array.from(coverflow.querySelectorAll('img'));
+    let current = 1;
+    function updateCoverflow() {
+      imgs.forEach(img => {
+        const idx = +img.dataset.index;
+        const diff = idx - current;
+        const abs = Math.abs(diff);
+        if (abs > 2) {
+          img.style.opacity = '0'; img.style.pointerEvents = 'none';
+        } else {
+          img.style.opacity = '1'; img.style.pointerEvents = 'auto';
+          const sign = diff < 0 ? -1 : 1;
+          img.style.transform = `translateX(${sign * 160 * abs}px) translateZ(${-100 * abs}px) rotateY(${sign * 40 * abs}deg) translateY(-50%) translateX(-50%)`;
+        }
+      });
+    }
+    function navigate(direction) {
+      current = Math.min(Math.max(current + direction, 0), imgs.length - 1);
+      updateCoverflow();
+    }
+    imgs.forEach(img => {
+      img.addEventListener('click', () => {
+        const idx = +img.dataset.index;
+        if (idx === current) window.open(img.src, '_blank');
+        else current = idx, updateCoverflow();
+      });
+    });
+    updateCoverflow();
+    // Depoimentos Slider
+    const slides = document.querySelector('.testimonials .slides');
+    let testiIndex = 0;
+    function testiNav(dir) {
+      const total = slides.children.length;
+      testiIndex = (testiIndex + dir + total) % total;
+      slides.style.transform = `translateX(-${testiIndex * 100}%)`;
+    }
+  </script>
+</body>
+</html>
