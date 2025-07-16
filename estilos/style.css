@@ -50,6 +50,8 @@
     .menu-toggle span {
       height:3px; width:25px; background: currentColor; margin:4px 0;
     }
+    
+
     #theme-toggle {
       background: none; border: none; color: currentColor;
       font-size:1.2rem; cursor:pointer; margin-left:1rem;
@@ -93,6 +95,9 @@
       background: var(--gold); color:#000; border-radius:8px;
       font-weight:bold; transition: background .3s;
     }
+
+
+
     .hero-content a:hover { background: var(--hover); }
     /* Seções Gerais */
     section { position: relative; padding:120px 20px 60px; max-width:1200px; margin:auto; }
@@ -148,4 +153,15 @@
     .testi-nav { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%); }
     .testi-nav button { background: var(--glass); border:none; padding:0.5rem 1rem; cursor:pointer; backdrop-filter:blur(10px); color:inherit; }
     /* WhatsApp Floater */
-    .whatsapp-float { position:fixed; bottom:20px; right:20px; width:60px; height:60px; z-index:1000; border-radius:50%; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.3); cursor:pointer; }  
+    .whatsapp-float { 
+      position:fixed; 
+      bottom:20px; 
+      right:20px; 
+      width:60px; 
+      height:60px; 
+      z-index:1000;
+      border-radius:50%; 
+      overflow:hidden;
+      box-shadow:0 2px 10px rgba(0,0,0,0.3); 
+      cursor:pointer; 
+    }  
