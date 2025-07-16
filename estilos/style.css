@@ -73,9 +73,9 @@
       animation: bgSwitch 15s ease-in-out infinite;
     }
     @keyframes bgSwitch {
-      0%,100% { background-image: url('imagem1.jpg'); }
-      33% { background-image: url('imagem2.jpg'); }
-      66% { background-image: url('imagem3.jpg'); }
+      0%,100% { background-image: url('imagem1.jpeg'); }
+      33% { background-image: url('imagem1.jpeg'); }
+      66% { background-image: url('imagem1.jpeg'); }
     }
     .hero-content {
       max-width:600px; padding:2rem; background: var(--glass);
@@ -140,7 +140,7 @@
     .next { right:-20px; }
     @media (max-width:768px) { .coverflow img { width:200px; height:260px; } }
     /* Depoimentos Slider */
-    .testimonials { max-width:800px; margin:4rem auto; overflow:hidden; position:relative; }
+    .testimonials { max-width:768px; margin:4rem auto; overflow:hidden; position:relative; }
     .testimonials .slides { display:flex; transition: transform .5s ease; }
     .testimonials .slide { min-width:100%; padding:2rem; box-sizing:border-box; text-align:center; }
     .testimonials .slide p { font-style:italic; margin-bottom:1rem; }
